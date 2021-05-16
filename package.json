@@ -1,17 +1,20 @@
 {
   "name": "osamaaamer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "My CLI",
   "main": "dist/bundle.js",
   "bin": {
     "osamaaamer": "dist/bundle.js"
   },
   "scripts": {
+    "bump": "bump --commit 'release v' --tag 'v'",
     "build": "rollup --config",
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
-  "keywords": ["cli"],
+  "keywords": [
+    "cli"
+  ],
   "author": "Osama Aamer <osama.aamer95@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -20,6 +23,7 @@
     "osamaaamer": "^0.0.3"
   },
   "devDependencies": {
+    "@jsdevtools/version-bump-prompt": "^6.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "rollup": "^2.48.0",
     "rollup-plugin-banner": "^0.2.1",
