@@ -1,0 +1,18 @@
+{
+  "name": "osamaaamer",
+  "version": "0.0.3",
+  "description": "My CLI",
+  "main": "index.js",
+  "bin": {
+    "osamaaamer": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Osama Aamer <osama.aamer95@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "osamaaamer": "^0.0.3"
+  }
+}
