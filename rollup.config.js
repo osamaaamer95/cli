@@ -1,3 +1,5 @@
+import typescript from "@rollup/plugin-typescript";
+
 import json from "@rollup/plugin-json";
 import banner from "rollup-plugin-banner";
 const { preserveShebangs } = require("rollup-plugin-preserve-shebangs");
@@ -22,16 +24,18 @@ const buildHeader = boxen(greeting, boxenOptions);
 console.log(buildHeader);
 
 export default {
-  input: "src/index.js",
+  input: "src/index.ts",
   output: {
     file: "dist/bundle.js",
     format: "cjs",
   },
   plugins: [
+    typescript(),
     json(),
     banner("\nosamaaamer-cli v<%= pkg.version %>\n<%= pkg.author %>\n"),
     preserveShebangs(),
     analyze(),
     bundleSize(),
   ],
+  external: ["chalk", "boxen"],
 };
