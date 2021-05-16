@@ -1,5 +1,7 @@
 import typescript from "@rollup/plugin-typescript";
 
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import json from "@rollup/plugin-json";
 import banner from "rollup-plugin-banner";
 const { preserveShebangs } = require("rollup-plugin-preserve-shebangs");
@@ -23,19 +25,33 @@ const boxenOptions = {
 const buildHeader = boxen(greeting, boxenOptions);
 console.log(buildHeader);
 
+function getPlugins(config) {
+  const basePlugins = [
+    nodeResolve({
+      browser: false,
+    }),
+    commonjs(),
+    typescript({
+      module: "ESNext",
+    }),
+    json(),
+    banner("\nosamaaamer-cli v<%= pkg.version %>\n<%= pkg.author %>\n"),
+    preserveShebangs(),
+  ];
+
+  if (!config.devMode) {
+    basePlugins.push(analyze(), bundleSize());
+  }
+
+  return basePlugins;
+}
+
 export default {
   input: "src/index.ts",
   output: {
     file: "dist/bundle.js",
     format: "cjs",
   },
-  plugins: [
-    typescript(),
-    json(),
-    banner("\nosamaaamer-cli v<%= pkg.version %>\n<%= pkg.author %>\n"),
-    preserveShebangs(),
-    analyze(),
-    bundleSize(),
-  ],
-  external: ["chalk", "boxen"],
+  plugins: getPlugins({ devMode: !!process.env.DEV }),
+  external: ["chalk", "boxen", "yargs"],
 };
