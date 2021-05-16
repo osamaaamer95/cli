@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "description": "My CLI",
   "main": "dist/bundle.js",
+  "homepage": "https://github.com/osamaaamer95/cli#readme",
   "bin": {
     "osamaaamer": "dist/bundle.js"
   },
@@ -16,6 +17,14 @@
   "keywords": [
     "cli"
   ],
+  "bugs": {
+    "url" : "https://github.com/osamaaamer95/cli/issues",
+    "email" : "osama.aamer95@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osamaaamer95/cli.git"
+  },
   "author": "Osama Aamer <osama.aamer95@gmail.com>",
   "license": "MIT",
   "dependencies": {
